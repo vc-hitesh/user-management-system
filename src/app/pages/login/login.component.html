@@ -1,0 +1,25 @@
+<div class="center-form-main">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-card>
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-subtitle>Welcome to system...</mat-card-subtitle>
+            <mat-card-content>
+                <p>
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="username" name="username" type="text" placeholder="Enter username">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" name="password"  type="password" placeholder="Enter password">
+                    </mat-form-field>
+                </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button type="submit" color="primary">Login</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
