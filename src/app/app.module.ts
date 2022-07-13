@@ -8,9 +8,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,11 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
