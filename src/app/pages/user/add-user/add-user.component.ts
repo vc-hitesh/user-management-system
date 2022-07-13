@@ -13,6 +13,9 @@ import { UserService } from 'src/app/shared/services/user/user.service';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  /**
+   * Form with field of user information required.
+   */
   public userForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -28,6 +31,10 @@ export class AddUserComponent implements OnInit {
       Validators.pattern('^[0-9]*$'),
     ]),
   });
+
+  /**
+   * User id will get from nav param when admin editing user info.
+   */
   public userId: string;
   constructor(
     private activeRoute: ActivatedRoute,
@@ -37,6 +44,9 @@ export class AddUserComponent implements OnInit {
     private toast: ToasterService,
   ) { }
 
+  /**
+   * Observer for the navigation param
+   */
   ngOnInit(): void {
     this.activeRoute.params.subscribe(({id}) => {
       if (id) {
@@ -46,6 +56,9 @@ export class AddUserComponent implements OnInit {
     });
   }
 
+  /**
+   * Get user information from backend when edit
+   */
   public getUser(): void {
     this.userService.getUserById(+this.userId).pipe(
       take(1)
@@ -54,6 +67,9 @@ export class AddUserComponent implements OnInit {
     });
   }
 
+  /**
+   * Update user information into backend.
+   */
   public submit(): void {
     if (this.userForm.invalid) {
       this.toast.showToaster('Check red highlighted fields and submit again.');
