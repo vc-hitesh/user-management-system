@@ -8,6 +8,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": ["<rootDir>/setup-jest.ts"],
+    "globalSetup": "jest-preset-angular/global-setup"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.0.0",
@@ -30,8 +35,11 @@
     "@angular/cli": "~14.0.5",
     "@angular/compiler-cli": "^14.0.0",
     "@types/jasmine": "~4.0.0",
+    "@types/jest": "^28.1.5",
     "compodoc": "^0.0.41",
     "jasmine-core": "~4.1.0",
+    "jest": "^28.1.2",
+    "jest-preset-angular": "^12.1.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.2.0",
