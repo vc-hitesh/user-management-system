@@ -1,0 +1,36 @@
+<div class="container">
+    <mat-card *ngIf="userDetail">
+        <mat-card-title>{{userDetail.name}}</mat-card-title>
+        <form [formGroup]="profileForm" (ngSubmit)="submit()">
+            <mat-card-content>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" name="name" type="text" placeholder="Enter name">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Phone</mat-label>
+                            <input matInput formControlName="phone" name="phone" type="tel" placeholder="Enter phone">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Age</mat-label>
+                            <input matInput formControlName="age" name="age" type="number" placeholder="Enter age">
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Address</mat-label>
+                            <textarea matInput formControlName="address" name="address" placeholder="Enter age"></textarea>
+                        </mat-form-field>
+                    </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button type="submit" color="primary">Update</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
