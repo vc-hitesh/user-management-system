@@ -21,10 +21,18 @@ export class UserService {
     }
   }
 
+  /**
+   * Get current logged in user information.
+   */
   get currentUser() : User | null {
     return this.userSubject.value;
   }
 
+  /**
+   * Login api call.
+   * @param data Username and password
+   * @returns 
+   */
   public userLogin(data: Login): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.API_URL}/auth/login`, data)
       .pipe(tap((res: LoginResponse) => {
@@ -34,23 +42,44 @@ export class UserService {
       }));
   }
 
+  /**
+   * Clear storage and logout.
+   */
   public logout() : void {
     localStorage.clear();
     this.userSubject.next(null);
   }
-
+  /**
+   * Get user data by id api call.
+   * @param id User id to get specific user data.
+   * @returns 
+   */
   public getUserById(id: number): Observable<UserProfile> {
     return this.http.get<UserProfile>(`${environment.API_URL}/user/${id}`);
   }
 
+  /**
+   * Update api of user own profile.
+   * @param data User profile information
+   * @returns Result of the update
+   */
   public updateProfile(data: UpdateProfilePayload ): Observable<SuccessResponse> {
     return this.http.put<SuccessResponse>(`${environment.API_URL}/profile`, data);
   }
 
+  /**
+   * Api to get user list.
+   * @returns User list
+   */
   public getUsersList(): Observable<UserProfile[]> {
     return this.http.get<UserProfile[]>(`${environment.API_URL}/users`);
   }
 
+  /**
+   * Add/Edit user information.
+   * @param payload Has information to add or update user.
+   * @returns 
+   */
   public addEditUser(
     payload: UserProfile
   ): Observable<SuccessResponse> {
