@@ -38,7 +38,7 @@ export class LoginComponent {
       finalize(() => { this.loaderService.stopLoader(); })
     ).subscribe((res: LoginResponse) => {
       if (res?.user?.role === 'admin' ) {
-        this.router.navigate(['/user/list'])
+        this.router.navigate(['/user'])
       } else {
         this.router.navigate(['/user/profile'])
       }
