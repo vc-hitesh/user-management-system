@@ -8,6 +8,7 @@ import { UserService } from './shared/services/user/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  // Page title
   title = 'userManagementSystem';
   constructor(
     public userService: UserService,
@@ -15,7 +16,9 @@ export class AppComponent {
   ) {
 
   }
-
+  /**
+   * Logout from system.
+   */
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('/login');

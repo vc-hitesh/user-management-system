@@ -6,13 +6,22 @@ import { User, UserProfile } from 'src/app/shared/models/user.model';
 import { ToasterService } from 'src/app/shared/services/toaster/toaster.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
+/**
+ * User own profile component.
+ */
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  /**
+   * Store user information
+   */
   public userDetail!: UserProfile;
+  /**
+   * User profile form with all required fields
+   */
   public profileForm: FormGroup;
   constructor(
     private userService: UserService,
@@ -21,10 +30,16 @@ export class ProfileComponent implements OnInit {
   ) {
   }
 
+  /**
+   * NG life cycle hook
+   */
   ngOnInit(): void {
     this.getUserProfile();
   }
 
+  /**
+   * Get user profile from backend.
+   */
   public getUserProfile(): void {
     if (this.userService.currentUser) {
       this.loaderService.startLoader();
@@ -38,6 +53,9 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  /**
+   * Create form of profile fields
+   */
   public createForm() : void {
     this.profileForm = new FormGroup({
       username: new FormControl(this.userDetail.name, Validators.required),
@@ -56,6 +74,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Update user profile after validating form.
+   * @returns Status of updating profile
+   */
   public submit(): void {
     if (this.profileForm.invalid) {
       this.toast.showToaster('Check the red highlighted detail and submit again.');

@@ -7,12 +7,18 @@ import { LoginResponse } from 'src/app/shared/models/user.model';
 import { ToasterService } from 'src/app/shared/services/toaster/toaster.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
+/**
+ * User login page component.
+ */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  /**
+   * Login form with required fields
+   */
   public form: FormGroup = new FormGroup({
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', Validators.required),
@@ -24,6 +30,10 @@ export class LoginComponent {
     private router: Router,
   ) { }
 
+  /**
+   * Check validation and initiate login api to verify user.
+   * @returns 
+   */
   public submit() : void {
     if (!this.form.valid){
       this.toast.showToaster('Check the red highlight field and submit again.')

@@ -7,6 +7,9 @@ import { UserProfile } from 'src/app/shared/models/user.model';
 import { ToasterService } from 'src/app/shared/services/toaster/toaster.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
+/**
+ * Add/Edit user information page component
+ */
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
