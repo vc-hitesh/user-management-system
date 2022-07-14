@@ -73,7 +73,7 @@ server.post('/user/add', (req, res) => {
       id: last_item_id + 1,
       username: username,
       password: password,
-      userrole: '2',
+      role: 'user',
       age: age,
       address: address,
       phone: phone,
@@ -201,7 +201,7 @@ server.get('/users', (req, res) => {
 
 server.put('/profile', (req, res) => {
   console.log(req.body);
-  req.body.userrole = '2';
+  req.body.role = 'user';
   const { password, phone, address, age, id, name } = req.body;
 
   fs.readFile('./server/users.json', (err, data) => {
